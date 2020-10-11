@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		
+	</head>
+	<body>
+		
+		<div id="matrix" style="width:30%">
+			<div class="panel" id="panel1" style="background-color:red;display:inline;">Content</div>
+			<div class="panel" id="panel2" style="background-color:green;display:inline;">Content</div>
+			<div class="panel" id="panel3" style="background-color:blue;display:inline;">Content</div>
+		</div>
+		<button type="button" id="revealButton">Click Me!</button>
+		<input type="text" id="textCode">Click Me!</button>
+		<script>
+			$( "#revealButton" ).click(function() {
+				switch( $("#textCode").val() ) {
+					case "1": $("#panel1").fadeToggle();break;
+					case "2": $("#panel2").fadeToggle();break;
+					case "3": $("#panel3").fadeToggle();break;
+				}
+			});
+		</script>
+	
+	</body>
+</html>
