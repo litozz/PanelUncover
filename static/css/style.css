@@ -21,7 +21,7 @@
   padding: 20px;
   font-size: 30px;
   text-align: center;
-  background-color:gray;
+  background-color:rgba(239, 230, 245, 1);
   opacity:1;
 }
 
@@ -46,3 +46,9 @@
   text-align: center;
 }
 
+#revealButton{
+  width: 50%;
+  border-radius: 30%;
+  background-color: pink;
+  color: white;
+}
