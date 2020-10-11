@@ -2,25 +2,109 @@
 <html>
 	<head>
 		<script type="text/javascript" src="../js/jquery.js"></script>
-		
+		<style>
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 50%;
+  margin:auto;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  z-index: 2;
+  padding:20px;
+
+}
+.grid-item {
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  background-color:gray;
+  opacity:1;
+}
+
+.hiddenContent{
+  width: 50%;
+  margin:auto;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  z-index: 1;
+}
+
+.hiddenContent #hiddenContentImg{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+#controls div{
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+		</style>
 	</head>
 	<body>
-		
-		<div id="matrix" style="width:30%">
-			<div class="panel" id="panel1" style="background-color:red;display:inline;">Content</div>
-			<div class="panel" id="panel2" style="background-color:green;display:inline;">Content</div>
-			<div class="panel" id="panel3" style="background-color:blue;display:inline;">Content</div>
+		<div class="content">
+		 	<div class="grid-container">
+  				<div class="grid-item" id="panel1">1</div>
+  				<div class="grid-item" id="panel2">2</div>
+  				<div class="grid-item" id="panel3">3</div>
+  				<div class="grid-item" id="panel4">4</div>
+  				<div class="grid-item" id="panel5">5</div>
+  				<div class="grid-item" id="panel6">6</div>
+  				<div class="grid-item" id="panel7">7</div>
+  				<div class="grid-item" id="panel8">8</div>
+  				<div class="grid-item" id="panel9">9</div>
+			</div>
+			<div class="hiddenContent">
+				<img id="hiddenContentImg"src="../img/circle.jpg"></img>
+			</div>
 		</div>
-		<button type="button" id="revealButton">Click Me!</button>
-		<input type="text" id="textCode">Click Me!</button>
+		<div id="controls">
+			<div>
+				<button type="button" id="revealButton">Reveal!</button>
+				<input type="text" id="textCode"/>
+			</div>
+		</div>
 		<script>
+			$( document ).ready(function(){
+				$("#hiddenContentImg").height(0.8*$(".grid-container").height());
+				$("#hiddenContentImg").width(0.8*$(".grid-container").width());	
+			});
+
 			$( "#revealButton" ).click(function() {
-				switch( $("#textCode").val() ) {
-					case "1": $("#panel1").fadeToggle();break;
-					case "2": $("#panel2").fadeToggle();break;
-					case "3": $("#panel3").fadeToggle();break;
+				var panelid = "#panel"+$("#textCode").val();
+				var visible = $(panelid).css("opacity") > 0;
+				if (visible){
+					$(panelid).css("opacity", 0); // hide
+				}else{
+					$(panelid).css("opacity", 1); // show
+				}
+				
+				var all_unlocked=true;
+
+				$( ".grid-container" ).children(".grid-item").each( function(idx, itm) {
+					var item_visible = $(   "#"+$(itm).attr('id')  ).css("opacity") > 0
+					if( item_visible ){
+						all_unlocked=false;
+					}
+				});
+				if (all_unlocked){
+					$(".grid-container").hide();
 				}
 			});
+
+			
 		</script>
 	
 	</body>
