@@ -11,4 +11,4 @@ RUN pip install -r requirements.txt
 
 WORKDIR /app/api
 EXPOSE 5000
-ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:5000", "wsgi:app"]
+ENTRYPOINT ["gunicorn", "--reload", "--bind", "0.0.0.0:5000", "wsgi:app"]
