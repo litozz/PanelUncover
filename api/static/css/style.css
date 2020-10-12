@@ -22,7 +22,6 @@
   font-size: 30px;
   text-align: center;
   background-color:rgba(239, 230, 245, 1);
-  opacity:1;
 }
 
 .hiddenContent{
@@ -40,7 +39,7 @@
   display: block;
 }
 
-#controls div{
+#controls form{
   width: 50%;
   margin: auto;
   text-align: center;
